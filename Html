@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Store Manager – Inventory (React Single File)</title>
+  <!-- React via CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel so we can write JSX in a single file -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans'; }
+    body { margin: 0; background:#f6f7f9; color:#0f172a; }
+    header { padding: 16px 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,.05); position: sticky; top: 0; z-index: 10; }
+    h1 { margin: 0; font-size: 20px; }
+    .wrap { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: 1.6fr .9fr; }
+    .card { background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,.06); padding: 16px; }
+    .muted { color:#475569; font-size: 14px; }
+    .row { display:flex; gap:10px; flex-wrap: wrap; }
+    input, select { padding:10px 12px; border:1px solid #e2e8f0; border-radius: 12px; outline: none; width: 100%; box-sizing: border-box; }
+    input:focus { border-color:#94a3b8; box-shadow: 0 0 0 3px rgba(148,163,184,.25); }
+    button { padding:10px 14px; border:0; border-radius: 12px; cursor:pointer; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    button.primary { background:#2563eb; color:white; }
+    button.ghost { background:#eef2ff; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+    .low { background: #fee2e2; }
+    .tag { font-size: 12px; padding:2px 8px; background:#f1f5f9; border-radius:999px; margin-right:6px; display:inline-block; }
+    .pill { background:#e2e8f0; padding:4px 8px; border-radius:999px; font-size:12px; }
+    .right { text-align:right; }
+    .qty { width: 72px; }
+    .mini { font-size:12px; color:#475569; }
+    .footer { display:flex; justify-content: space-between; align-items: center; gap:12px; }
+    .danger { background:#ef4444; color:white; }
+    .success { background:#16a34a; color:white; }
+    .searchbar { display:flex; gap:10px; margin:8px 0 16px; }
+    img.thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; }
+    .inline-form { display:flex; gap:8px; align-items:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Store Manager – Inventory</h1>
+    <div class="muted">React single‑file demo (persists in localStorage). Simulates MongoDB collections for Products and Sales.</div>
+  </header>
+
+  <div class="wrap">
+    <div id="app"></div>
+  </div>
+
+  <script type="text/babel">
+    const LS_KEYS = {
+      products: 'inv_products_v1',
+      sales: 'inv_sales_v1',
+      alert: 'inv_alert_v1'
+    };
+
+    const nowISO = () => new Date().toISOString();
+    const uid = () => `${Date.now()}_${Math.random().toString(36).slice(2,8)}`;
+
+    const loadJSON = (k, fallback) => {
+      try { return JSON.parse(localStorage.getItem(k)) ?? fallback; } catch { return fallback; }
+    };
+    const saveJSON = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+    // Seed sample data on first run
+    const defaultProducts = [
+      { id: uid(), name: 'Pencil HB', image: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=256', price: 10, stock: 40, tags:['stationery','writing'], createdAt: nowISO() },
+      { id: uid(), name: 'Notebook A5', image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=256', price: 60, stock: 15, tags:['stationery'], createdAt: nowISO() },
+      { id: uid(), name: 'Marker Black', image: 'https://images.unsplash.com/photo-1553532435-93d532a45f55?q=80&w=256', price: 30, stock: 6, tags:['stationery'], createdAt: nowISO() }
+    ];
+
+    function usePersistentState(key, initial) {
+      const [state, setState] = React.useState(() => loadJSON(key, initial));
+      React.useEffect(() => { saveJSON(key, state); }, [key, state]);
+      return [state, setState];
+    }
+
+    function currency(n) { return new Intl.NumberFormat(undefined, { style:'currency', currency:'INR', maximumFractionDigits: 2 }).format(n); }
+
+    function App(){
+      const [products, setProducts] = usePersistentState(LS_KEYS.products, defaultProducts);
+      const [sales, setSales] = usePersistentState(LS_KEYS.sales, []);
+      const [alertLevel, setAlertLevel] = usePersistentState(LS_KEYS.alert, 5);
+
+      const [query, setQuery] = React.useState('');
+      const [cart, setCart] = React.useState([]); // [{id, qty}]
+
+      const filtered = React.useMemo(() => {
+        const q = query.trim().toLowerCase();
+        if(!q) return products;
+        return products.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          p.tags.join(' ').toLowerCase().includes(q)
+        );
+      }, [query, products]);
+
+      const addProduct = (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const name = fd.get('name').trim();
+        const image = fd.get('image').trim();
+        const price = parseFloat(fd.get('price')) || 0;
+        const stock = parseInt(fd.get('stock')) || 0;
+        const tags = fd.get('tags').split(',').map(s=>s.trim()).filter(Boolean);
+        if(!name) return alert('Product name required');
+        const p = { id: uid(), name, image, price, stock, tags, createdAt: nowISO() };
+        setProducts(prev => [p, ...prev]);
+        e.target.reset();
+      };
+
+      const addStock = (id, amount) => {
+        setProducts(prev => prev.map(p => p.id===id ? { ...p, stock: Math.max(0, p.stock + amount) } : p));
+      };
+
+      const addToCart = (id, qty) => {
+        if(qty <= 0) return;
+        setCart(prev => {
+          const found = prev.find(i=>i.id===id);
+          if(found){ return prev.map(i=> i.id===id ? { ...i, qty: i.qty + qty } : i); }
+          return [...prev, { id, qty }];
+        });
+      };
+
+      const setCartQty = (id, qty) => {
+        setCart(prev => prev.map(i => i.id===id ? { ...i, qty: Math.max(0, qty) } : i).filter(i=>i.qty>0));
+      };
+
+      const removeFromCart = (id) => setCart(prev => prev.filter(i=>i.id!==id));
+      const clearCart = () => setCart([]);
+
+      const cartDetailed = cart.map(ci => {
+        const p = products.find(p=>p.id===ci.id);
+        return p ? { ...ci, name:p.name, price:p.price, stock:p.stock, image:p.image } : null;
+      }).filter(Boolean);
+
+      const cartTotal = cartDetailed.reduce((s,i)=> s + i.price * i.qty, 0);
+
+      const checkout = () => {
+        if(cartDetailed.length===0) return alert('Cart is empty');
+        // Validate stock
+        for(const item of cartDetailed){
+          if(item.qty > item.stock){
+            return alert(`Not enough stock for ${item.name}. In stock: ${item.stock}`);
+          }
+        }
+        // Update stocks
+        setProducts(prev => prev.map(p => {
+          const ci = cart.find(i=>i.id===p.id);
+          if(!ci) return p;
+          return { ...p, stock: p.stock - ci.qty };
+        }));
+        // Record sale
+        const sale = {
+          id: uid(),
+          datetime: nowISO(),
+          items: cartDetailed.map(i=>({ id:i.id, name:i.name, qty:i.qty, price:i.price, subtotal: i.price*i.qty })),
+          total: cartTotal
+        };
+        setSales(prev => [sale, ...prev]);
+        clearCart();
+        alert('Checkout successful! Inventory updated and sale recorded.');
+      };
+
+      return (
+        <div className="grid">
+          <div className="card">
+            <div className="footer" style={{marginBottom:12}}>
+              <div className="inline-form">
+                <span className="mini">Low‑stock threshold:</span>
+                <input className="qty" type="number" min="0" value={alertLevel}
+                  onChange={e=>setAlertLevel(Math.max(0, parseInt(e.target.value||'0')))} />
+              </div>
+              <div className="searchbar">
+                <input placeholder="Search products or tags..." value={query} onChange={e=>setQuery(e.target.value)} />
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th className="right">Add to Cart</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map(p=>{
+                  const low = p.stock <= alertLevel;
+                  let qtyRef = React.createRef();
+                  return (
+                    <tr key={p.id} className={low? 'low':''}>
+                      <td>
+                        <div className="row" style={{alignItems:'center'}}>
+                          <img className="thumb" src={p.image||'https://via.placeholder.com/56'} alt=""/>
+                          <div>
+                            <div style={{fontWeight:600}}>{p.name}</div>
+                            <div>{p.tags.map(t=> <span key={t} className="tag">{t}</span>)}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{currency(p.price)}</td>
+                      <td>
+                        <div className="row" style={{alignItems:'center'}}>
+                          <span className="pill">{p.stock}</span>
+                          <button className="ghost" onClick={()=>{
+                            const n = parseInt(prompt('Add units to stock for "'+p.name+'"', '1')||'0');
+                            if(!isNaN(n) && n>0) addStock(p.id, n);
+                          }}>+ Add Stock</button>
+                        </div>
+                      </td>
+                      <td className="right">
+                        <div className="inline-form" style={{justifyContent:'flex-end'}}>
+                          <input className="qty" type="number" min="1" defaultValue="1" ref={qtyRef} />
+                          <button className="primary" onClick={()=>{
+                            const q = parseInt(qtyRef.current.value||'1');
+                            addToCart(p.id, Math.max(1, q));
+                          }}>Add</button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+                {filtered.length===0 && (
+                  <tr><td colSpan="4" className="muted">No products match your search.</td></tr>
+                )}
+              </tbody>
+            </table>
+
+            <details style={{marginTop:16}}>
+              <summary><strong>Add New Product</strong></summary>
+              <form className="row" style={{marginTop:12}} onSubmit={addProduct}>
+                <input name="name" placeholder="Name *" required />
+                <input name="image" placeholder="Image URL (optional)" />
+                <input name="price" type="number" step="0.01" placeholder="Price" required />
+                <input name="stock" type="number" placeholder="Initial Stock" required />
+                <input name="tags" placeholder="Tags (comma‑separated)" />
+                <button className="primary" type="submit">Add Product</button>
+              </form>
+            </details>
+          </div>
+
+          <div className="card">
+            <h3 style={{marginTop:0}}>Cart</h3>
+            {cartDetailed.length===0 ? (
+              <div className="muted">Cart is empty</div>
+            ) : (
+              <>
+                {cartDetailed.map(i=> (
+                  <div key={i.id} style={{display:'grid', gridTemplateColumns:'56px 1fr auto', gap:10, alignItems:'center', marginBottom:10}}>
+                    <img className="thumb" src={i.image||'https://via.placeholder.com/56'} alt=""/>
+                    <div>
+                      <div style={{fontWeight:600}}>{i.name}</div>
+                      <div className="mini">{currency(i.price)} each • In stock: {i.stock}</div>
+                    </div>
+                    <div className="inline-form" style={{justifySelf:'end'}}>
+                      <input className="qty" type="number" min="1" value={i.qty} onChange={e=>setCartQty(i.id, parseInt(e.target.value||'1'))} />
+                      <button className="ghost" onClick={()=>removeFromCart(i.id)}>Remove</button>
+                    </div>
+                  </div>
+                ))}
+                <hr/>
+                <div className="footer">
+                  <div><strong>Total:</strong> {currency(cartTotal)}</div>
+                  <div className="row">
+                    <button className="ghost" onClick={clearCart}>Clear</button>
+                    <button className="success" onClick={checkout}>Checkout</button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <details style={{marginTop:18}}>
+              <summary><strong>Sales Records</strong> <span className="mini">(latest first)</span></summary>
+              <div style={{marginTop:12}}>
+                {sales.length===0 && <div className="muted">No sales yet.</div>}
+                {sales.map(s => (
+                  <div key={s.id} style={{border:'1px solid #e2e8f0', borderRadius:12, padding:12, marginBottom:10}}>
+                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                      <div><strong>Sale:</strong> {s.id.slice(-6)}</div>
+                      <div className="mini">{new Date(s.datetime).toLocaleString()}</div>
+                    </div>
+                    <ul>
+                      {s.items.map(it => (
+                        <li key={it.id+it.qty} className="mini">{it.name} × {it.qty} — {currency(it.subtotal)}</li>
+                      ))}
+                    </ul>
+                    <div><strong>Total:</strong> {currency(s.total)}</div>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+  </script>
+</body>
+</html>
