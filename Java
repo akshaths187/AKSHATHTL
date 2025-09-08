@@ -1,0 +1,44 @@
+// backend.js
+const express = require("express");
+const cors = require("cors");
+const { v4: uuid } = require("uuid");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+let products = [
+  { id: uuid(), name: "Pencil HB", price: 10, stock: 40, tags: ["stationery", "writing"] },
+  { id: uuid(), name: "Notebook A5", price: 60, stock: 15, tags: ["stationery"] },
+];
+let sales = [];
+
+// Get all products
+app.get("/api/products", (req, res) => {
+  res.json(products);
+});
+
+// Add new product
+app.post("/api/products", (req, res) => {
+  const product = { id: uuid(), ...req.body };
+  products.push(product);
+  res.json(product);
+});
+
+// Checkout
+app.post("/api/checkout", (req, res) => {
+  const sale = { id: uuid(), datetime: new Date(), ...req.body };
+  sale.items.forEach(item => {
+    const p = products.find(p => p.id === item.productId);
+    if (p) p.stock -= item.qty;
+  });
+  sales.unshift(sale);
+  res.json(sale);
+});
+
+// Get all sales
+app.get("/api/sales", (req, res) => {
+  res.json(sales);
+});
+
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));
