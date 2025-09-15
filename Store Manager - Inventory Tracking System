@@ -1,0 +1,905 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/2f8350da35623bcf6c025e69a37159a7/975bc82c-5597-4e75-808e-7624e64c8a2d/index.html?utm_source=perplexity
+Subject: Store Manager - Inventory Tracking System
+Date: Mon, 1 Sep 2025 13:35:56 +0530
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--GmolPQy1lk6lRGxPi1aDWuKxrhyeRc5Jq3468z0RNo----"
+
+
+------MultipartBoundary--GmolPQy1lk6lRGxPi1aDWuKxrhyeRc5Jq3468z0RNo----
+Content-Type: text/html
+Content-ID: <frame-2913140D71DD2443BD69E73E7889A9C4@mhtml.blink>
+Content-Transfer-Encoding: binary
+Content-Location: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/2f8350da35623bcf6c025e69a37159a7/975bc82c-5597-4e75-808e-7624e64c8a2d/index.html?utm_source=perplexity
+
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Manager - Inventory Tracking System</title>
+    <link rel="stylesheet" href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/2f8350da35623bcf6c025e69a37159a7/975bc82c-5597-4e75-808e-7624e64c8a2d/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__content">
+                <h1 class="header__title">Store Manager</h1>
+                <nav class="nav">
+                    <button class="nav__item nav__item--active" data-section="dashboard">Dashboard</button>
+                    <button class="nav__item" data-section="add-item">Add Item</button>
+                    <button class="nav__item" data-section="manage-inventory">Manage Inventory</button>
+                    <button class="nav__item" data-section="reports">Reports</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Dashboard Section -->
+            <section class="section section--active" id="dashboard">
+                <div class="dashboard">
+                    <h2 class="section__title">Inventory Dashboard</h2>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card__content">
+                                <h3 class="stat-card__title">Total Items</h3>
+                                <div class="stat-card__value" id="total-items">130</div>
+                                <div class="stat-card__label">Products in stock</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card stat-card--warning">
+                            <div class="stat-card__content">
+                                <h3 class="stat-card__title">Low Stock</h3>
+                                <div class="stat-card__value" id="low-stock-count">3</div>
+                                <div class="stat-card__label">Items below minimum</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card stat-card--error">
+                            <div class="stat-card__content">
+                                <h3 class="stat-card__title">Expired</h3>
+                                <div class="stat-card__value" id="expired-count">0</div>
+                                <div class="stat-card__label">Items past expiry</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card stat-card--success">
+                            <div class="stat-card__content">
+                                <h3 class="stat-card__title">Total Value</h3>
+                                <div class="stat-card__value" id="total-value">$30,776.82</div>
+                                <div class="stat-card__label">Inventory worth</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions__grid">
+                            <button class="btn btn--primary" data-action="add-item">Add New Item</button>
+                            <button class="btn btn--secondary" data-action="low-stock-report">View Low Stock</button>
+                            <button class="btn btn--secondary" data-action="expired-report">View Expired Items</button>
+                            <button class="btn btn--outline" data-action="export-data">Export Data</button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="recent-activity">
+                        <h3>Items Requiring Attention</h3>
+                        <div class="activity-list" id="attention-items">
+      <div class="activity-item">
+        <div class="activity-item__info">
+          <div class="activity-item__name">Samsung Galaxy S24</div>
+          <div class="activity-item__details">
+            Only 5 left (min: 8)
+          </div>
+        </div>
+        <div class="status-indicator status-indicator--low">Low Stock</div>
+      </div>
+    
+      <div class="activity-item">
+        <div class="activity-item__info">
+          <div class="activity-item__name">Organic Apples</div>
+          <div class="activity-item__details">
+            Expires on Sep 15, 2025
+          </div>
+        </div>
+        <div class="status-indicator status-indicator--expiring">Expiring Soon</div>
+      </div>
+    
+      <div class="activity-item">
+        <div class="activity-item__info">
+          <div class="activity-item__name">Milk - Whole</div>
+          <div class="activity-item__details">
+            Expires on Sep 5, 2025
+          </div>
+        </div>
+        <div class="status-indicator status-indicator--expiring">Expiring Soon</div>
+      </div>
+    
+      <div class="activity-item">
+        <div class="activity-item__info">
+          <div class="activity-item__name">Bread - Whole Wheat</div>
+          <div class="activity-item__details">
+            Expires on Sep 3, 2025
+          </div>
+        </div>
+        <div class="status-indicator status-indicator--expiring">Expiring Soon</div>
+      </div>
+    </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Item Section -->
+            <section class="section" id="add-item">
+                <div class="add-item">
+                    <h2 class="section__title">Add New Item</h2>
+                    
+                    <form class="item-form" id="add-item-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="item-name">Product Name</label>
+                                <input type="text" class="form-control" id="item-name" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-category">Category</label>
+                                <select class="form-control" id="item-category" required="">
+                                    <option value="">Select Category</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Dairy">Dairy</option>
+                                    <option value="Bakery">Bakery</option>
+                                    <option value="Clothing">Clothing</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-quantity">Quantity</label>
+                                <input type="number" class="form-control" id="item-quantity" min="0" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-price">Unit Price ($)</label>
+                                <input type="number" class="form-control" id="item-price" min="0" step="0.01" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-supplier">Supplier</label>
+                                <input type="text" class="form-control" id="item-supplier" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-expiry">Expiry Date</label>
+                                <input type="date" class="form-control" id="item-expiry" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="item-minimum">Minimum Stock Level</label>
+                                <input type="number" class="form-control" id="item-minimum" min="0" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="item-description">Description</label>
+                            <textarea class="form-control" id="item-description" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary">Add Item</button>
+                            <button type="reset" class="btn btn--outline">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Manage Inventory Section -->
+            <section class="section" id="manage-inventory">
+                <div class="manage-inventory">
+                    <h2 class="section__title">Manage Inventory</h2>
+                    
+                    <!-- Search and Filters -->
+                    <div class="inventory-controls">
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="search-input" placeholder="Search items...">
+                        </div>
+                        
+                        <div class="filter-controls">
+                            <select class="form-control" id="category-filter">
+                                <option value="">All Categories</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Food">Food</option>
+                                <option value="Dairy">Dairy</option>
+                                <option value="Bakery">Bakery</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            
+                            <select class="form-control" id="status-filter">
+                                <option value="">All Items</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="expired">Expired</option>
+                                <option value="expiring-soon">Expiring Soon</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Inventory Table -->
+                    <div class="table-container">
+                        <table class="inventory-table" id="inventory-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="name">Product Name</th>
+                                    <th data-sort="category">Category</th>
+                                    <th data-sort="quantity">Quantity</th>
+                                    <th data-sort="unit_price">Price</th>
+                                    <th data-sort="supplier">Supplier</th>
+                                    <th data-sort="expiry_date">Expiry Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-tbody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section class="section" id="reports">
+                <div class="reports">
+                    <h2 class="section__title">Reports</h2>
+                    
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <h3>Inventory Summary</h3>
+                            <p>Complete overview of all inventory items</p>
+                            <button class="btn btn--primary" data-report="summary">Generate Report</button>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>Low Stock Report</h3>
+                            <p>Items that need to be restocked</p>
+                            <button class="btn btn--warning" data-report="low-stock">Generate Report</button>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>Expired Items</h3>
+                            <p>Items past their expiry date</p>
+                            <button class="btn btn--error" data-report="expired">Generate Report</button>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>Stock Value Report</h3>
+                            <p>Financial overview of inventory</p>
+                            <button class="btn btn--success" data-report="value">Generate Report</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Report Display Area -->
+                    <div class="report-display" id="report-display">
+                        <!-- Reports will be displayed here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Item Modal -->
+    <div class="modal hidden" id="edit-modal">
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3>Edit Item</h3>
+                    <button class="modal__close" data-close="edit-modal">×</button>
+                </div>
+                <div class="modal__body">
+                    <form id="edit-item-form">
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="edit-name">Product Name</label>
+                                <input type="text" class="form-control" id="edit-name" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-category">Category</label>
+                                <select class="form-control" id="edit-category" required="">
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Dairy">Dairy</option>
+                                    <option value="Bakery">Bakery</option>
+                                    <option value="Clothing">Clothing</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-quantity">Quantity</label>
+                                <input type="number" class="form-control" id="edit-quantity" min="0" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-price">Unit Price ($)</label>
+                                <input type="number" class="form-control" id="edit-price" min="0" step="0.01" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-supplier">Supplier</label>
+                                <input type="text" class="form-control" id="edit-supplier" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-expiry">Expiry Date</label>
+                                <input type="date" class="form-control" id="edit-expiry" required="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="edit-minimum">Minimum Stock</label>
+                                <input type="number" class="form-control" id="edit-minimum" min="0" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="edit-description">Description</label>
+                            <textarea class="form-control" id="edit-description" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="modal__actions">
+                            <button type="submit" class="btn btn--primary">Update Item</button>
+                            <button type="button" class="btn btn--outline" data-close="edit-modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Update Modal -->
+    <div class="modal hidden" id="stock-modal">
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3>Update Stock</h3>
+                    <button class="modal__close" data-close="stock-modal">×</button>
+                </div>
+                <div class="modal__body">
+                    <form id="stock-update-form">
+                        
+                        <div class="stock-info">
+                            <h4 id="stock-item-name"></h4>
+                            <p>Current Stock: <span id="current-stock"></span></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Stock Action</label>
+                            <div class="stock-actions">
+                                <button type="button" class="btn btn--outline stock-action" data-action="add">Add Stock</button>
+                                <button type="button" class="btn btn--outline stock-action" data-action="remove">Remove Stock</button>
+                                <button type="button" class="btn btn--outline stock-action" data-action="set">Set Stock</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="stock-amount">Amount</label>
+                            <input type="number" class="form-control" id="stock-amount" min="0" required="">
+                        </div>
+                        
+                        <div class="modal__actions">
+                            <button type="submit" class="btn btn--primary">Update Stock</button>
+                            <button type="button" class="btn btn--outline" data-close="stock-modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal hidden" id="confirm-modal">
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3>Confirm Action</h3>
+                    <button class="modal__close" data-close="confirm-modal">×</button>
+                </div>
+                <div class="modal__body">
+                    <p id="confirm-message"></p>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--error" id="confirm-yes">Yes, Delete</button>
+                        <button type="button" class="btn btn--outline" data-close="confirm-modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container">
+        <!-- Toasts will be dynamically added here -->
+    <div class="toast toast--success">
+    <div class="toast__icon">✓</div>
+    <div class="toast__content">
+      <div class="toast__title">Welcome</div>
+      <div class="toast__message">Store Manager Inventory System loaded successfully!</div>
+    </div>
+    <button class="toast__close">×</button>
+  </div></div>
+
+    
+
+</body></html>
+------MultipartBoundary--GmolPQy1lk6lRGxPi1aDWuKxrhyeRc5Jq3468z0RNo----
+Content-Type: text/css
+Content-Transfer-Encoding: binary
+Content-Location: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/2f8350da35623bcf6c025e69a37159a7/975bc82c-5597-4e75-808e-7624e64c8a2d/style.css
+
+@charset "utf-8";
+
+:root { --color-white: rgba(255, 255, 255, 1); --color-black: rgba(0, 0, 0, 1); --color-cream-50: rgba(252, 252, 249, 1); --color-cream-100: rgba(255, 255, 253, 1); --color-gray-200: rgba(245, 245, 245, 1); --color-gray-300: rgba(167, 169, 169, 1); --color-gray-400: rgba(119, 124, 124, 1); --color-slate-500: rgba(98, 108, 113, 1); --color-brown-600: rgba(94, 82, 64, 1); --color-charcoal-700: rgba(31, 33, 33, 1); --color-charcoal-800: rgba(38, 40, 40, 1); --color-slate-900: rgba(19, 52, 59, 1); --color-teal-300: rgba(50, 184, 198, 1); --color-teal-400: rgba(45, 166, 178, 1); --color-teal-500: rgba(33, 128, 141, 1); --color-teal-600: rgba(29, 116, 128, 1); --color-teal-700: rgba(26, 104, 115, 1); --color-teal-800: rgba(41, 150, 161, 1); --color-red-400: rgba(255, 84, 89, 1); --color-red-500: rgba(192, 21, 47, 1); --color-orange-400: rgba(230, 129, 97, 1); --color-orange-500: rgba(168, 75, 47, 1); --color-brown-600-rgb: 94, 82, 64; --color-teal-500-rgb: 33, 128, 141; --color-slate-900-rgb: 19, 52, 59; --color-slate-500-rgb: 98, 108, 113; --color-red-500-rgb: 192, 21, 47; --color-red-400-rgb: 255, 84, 89; --color-orange-500-rgb: 168, 75, 47; --color-orange-400-rgb: 230, 129, 97; --color-bg-1: rgba(59, 130, 246, 0.08); --color-bg-2: rgba(245, 158, 11, 0.08); --color-bg-3: rgba(34, 197, 94, 0.08); --color-bg-4: rgba(239, 68, 68, 0.08); --color-bg-5: rgba(147, 51, 234, 0.08); --color-bg-6: rgba(249, 115, 22, 0.08); --color-bg-7: rgba(236, 72, 153, 0.08); --color-bg-8: rgba(6, 182, 212, 0.08); --color-background: var(--color-cream-50); --color-surface: var(--color-cream-100); --color-text: var(--color-slate-900); --color-text-secondary: var(--color-slate-500); --color-primary: var(--color-teal-500); --color-primary-hover: var(--color-teal-600); --color-primary-active: var(--color-teal-700); --color-secondary: rgba(var(--color-brown-600-rgb), 0.12); --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2); --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25); --color-border: rgba(var(--color-brown-600-rgb), 0.2); --color-btn-primary-text: var(--color-cream-50); --color-card-border: rgba(var(--color-brown-600-rgb), 0.12); --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12); --color-error: var(--color-red-500); --color-success: var(--color-teal-500); --color-warning: var(--color-orange-500); --color-info: var(--color-slate-500); --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4); --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8); --focus-ring: 0 0 0 3px var(--color-focus-ring); --focus-outline: 2px solid var(--color-primary); --status-bg-opacity: 0.15; --status-border-opacity: 0.25; --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --color-success-rgb: 33, 128, 141; --color-error-rgb: 192, 21, 47; --color-warning-rgb: 168, 75, 47; --color-info-rgb: 98, 108, 113; --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace; --font-size-xs: 11px; --font-size-sm: 12px; --font-size-base: 14px; --font-size-md: 14px; --font-size-lg: 16px; --font-size-xl: 18px; --font-size-2xl: 20px; --font-size-3xl: 24px; --font-size-4xl: 30px; --font-weight-normal: 400; --font-weight-medium: 500; --font-weight-semibold: 550; --font-weight-bold: 600; --line-height-tight: 1.2; --line-height-normal: 1.5; --letter-spacing-tight: -0.01em; --space-0: 0; --space-1: 1px; --space-2: 2px; --space-4: 4px; --space-6: 6px; --space-8: 8px; --space-10: 10px; --space-12: 12px; --space-16: 16px; --space-20: 20px; --space-24: 24px; --space-32: 32px; --radius-sm: 6px; --radius-base: 8px; --radius-md: 10px; --radius-lg: 12px; --radius-full: 9999px; --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02); --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02); --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02); --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02); --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03); --duration-fast: 150ms; --duration-normal: 250ms; --ease-standard: cubic-bezier(0.16, 1, 0.3, 1); --container-sm: 640px; --container-md: 768px; --container-lg: 1024px; --container-xl: 1280px; }
+
+@media (prefers-color-scheme: dark) {
+  :root { --color-gray-400-rgb: 119, 124, 124; --color-teal-300-rgb: 50, 184, 198; --color-gray-300-rgb: 167, 169, 169; --color-gray-200-rgb: 245, 245, 245; --color-bg-1: rgba(29, 78, 216, 0.15); --color-bg-2: rgba(180, 83, 9, 0.15); --color-bg-3: rgba(21, 128, 61, 0.15); --color-bg-4: rgba(185, 28, 28, 0.15); --color-bg-5: rgba(107, 33, 168, 0.15); --color-bg-6: rgba(194, 65, 12, 0.15); --color-bg-7: rgba(190, 24, 93, 0.15); --color-bg-8: rgba(8, 145, 178, 0.15); --color-background: var(--color-charcoal-700); --color-surface: var(--color-charcoal-800); --color-text: var(--color-gray-200); --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7); --color-primary: var(--color-teal-300); --color-primary-hover: var(--color-teal-400); --color-primary-active: var(--color-teal-800); --color-secondary: rgba(var(--color-gray-400-rgb), 0.15); --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25); --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3); --color-border: rgba(var(--color-gray-400-rgb), 0.3); --color-error: var(--color-red-400); --color-success: var(--color-teal-300); --color-warning: var(--color-orange-400); --color-info: var(--color-gray-300); --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4); --color-btn-primary-text: var(--color-slate-900); --color-card-border: rgba(var(--color-gray-400-rgb), 0.2); --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15); --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15); --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2); --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2); --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8); --focus-ring: 0 0 0 3px var(--color-focus-ring); --focus-outline: 2px solid var(--color-primary); --status-bg-opacity: 0.15; --status-border-opacity: 0.25; --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --color-success-rgb: var(--color-teal-300-rgb); --color-error-rgb: var(--color-red-400-rgb); --color-warning-rgb: var(--color-orange-400-rgb); --color-info-rgb: var(--color-gray-300-rgb); }
+}
+
+[data-color-scheme="dark"] { --color-gray-400-rgb: 119, 124, 124; --color-teal-300-rgb: 50, 184, 198; --color-gray-300-rgb: 167, 169, 169; --color-gray-200-rgb: 245, 245, 245; --color-bg-1: rgba(29, 78, 216, 0.15); --color-bg-2: rgba(180, 83, 9, 0.15); --color-bg-3: rgba(21, 128, 61, 0.15); --color-bg-4: rgba(185, 28, 28, 0.15); --color-bg-5: rgba(107, 33, 168, 0.15); --color-bg-6: rgba(194, 65, 12, 0.15); --color-bg-7: rgba(190, 24, 93, 0.15); --color-bg-8: rgba(8, 145, 178, 0.15); --color-background: var(--color-charcoal-700); --color-surface: var(--color-charcoal-800); --color-text: var(--color-gray-200); --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7); --color-primary: var(--color-teal-300); --color-primary-hover: var(--color-teal-400); --color-primary-active: var(--color-teal-800); --color-secondary: rgba(var(--color-gray-400-rgb), 0.15); --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25); --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3); --color-border: rgba(var(--color-gray-400-rgb), 0.3); --color-error: var(--color-red-400); --color-success: var(--color-teal-300); --color-warning: var(--color-orange-400); --color-info: var(--color-gray-300); --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4); --color-btn-primary-text: var(--color-slate-900); --color-card-border: rgba(var(--color-gray-400-rgb), 0.15); --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15); --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15); --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2); --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8); --focus-ring: 0 0 0 3px var(--color-focus-ring); --focus-outline: 2px solid var(--color-primary); --status-bg-opacity: 0.15; --status-border-opacity: 0.25; --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); --color-success-rgb: var(--color-teal-300-rgb); --color-error-rgb: var(--color-red-400-rgb); --color-warning-rgb: var(--color-orange-400-rgb); --color-info-rgb: var(--color-gray-300-rgb); }
+
+[data-color-scheme="light"] { --color-brown-600-rgb: 94, 82, 64; --color-teal-500-rgb: 33, 128, 141; --color-slate-900-rgb: 19, 52, 59; --color-background: var(--color-cream-50); --color-surface: var(--color-cream-100); --color-text: var(--color-slate-900); --color-text-secondary: var(--color-slate-500); --color-primary: var(--color-teal-500); --color-primary-hover: var(--color-teal-600); --color-primary-active: var(--color-teal-700); --color-secondary: rgba(var(--color-brown-600-rgb), 0.12); --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2); --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25); --color-border: rgba(var(--color-brown-600-rgb), 0.2); --color-btn-primary-text: var(--color-cream-50); --color-card-border: rgba(var(--color-brown-600-rgb), 0.12); --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12); --color-error: var(--color-red-500); --color-success: var(--color-teal-500); --color-warning: var(--color-orange-500); --color-info: var(--color-slate-500); --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4); --color-success-rgb: var(--color-teal-500-rgb); --color-error-rgb: var(--color-red-500-rgb); --color-warning-rgb: var(--color-orange-500-rgb); --color-info-rgb: var(--color-slate-500-rgb); }
+
+html { font-size: var(--font-size-base); font-family: var(--font-family-base); line-height: var(--line-height-normal); color: var(--color-text); background-color: var(--color-background); -webkit-font-smoothing: antialiased; box-sizing: border-box; }
+
+body { margin: 0px; padding: 0px; }
+
+*, ::before, ::after { box-sizing: inherit; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-weight: var(--font-weight-semibold); line-height: var(--line-height-tight); color: var(--color-text); letter-spacing: var(--letter-spacing-tight); }
+
+h1 { font-size: var(--font-size-4xl); }
+
+h2 { font-size: var(--font-size-3xl); }
+
+h3 { font-size: var(--font-size-2xl); }
+
+h4 { font-size: var(--font-size-xl); }
+
+h5 { font-size: var(--font-size-lg); }
+
+h6 { font-size: var(--font-size-md); }
+
+p { margin: 0 0 var(--space-16) 0; }
+
+a { color: var(--color-primary); text-decoration: none; transition: color var(--duration-fast) var(--ease-standard); }
+
+a:hover { color: var(--color-primary-hover); }
+
+code, pre { font-family: var(--font-family-mono); font-size: calc(var(--font-size-base) * 0.95); background-color: var(--color-secondary); border-radius: var(--radius-sm); }
+
+code { padding: var(--space-1) var(--space-4); }
+
+pre { padding: var(--space-16); margin: var(--space-16) 0; overflow: auto; border: 1px solid var(--color-border); }
+
+pre code { background: none; padding: 0px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: var(--space-8) var(--space-16); border-radius: var(--radius-base); font-size: var(--font-size-base); font-weight: 500; line-height: 1.5; cursor: pointer; transition: all var(--duration-normal) var(--ease-standard); border: none; text-decoration: none; position: relative; }
+
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.btn--primary { background: var(--color-primary); color: var(--color-btn-primary-text); }
+
+.btn--primary:hover { background: var(--color-primary-hover); }
+
+.btn--primary:active { background: var(--color-primary-active); }
+
+.btn--secondary { background: var(--color-secondary); color: var(--color-text); }
+
+.btn--secondary:hover { background: var(--color-secondary-hover); }
+
+.btn--secondary:active { background: var(--color-secondary-active); }
+
+.btn--outline { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); }
+
+.btn--outline:hover { background: var(--color-secondary); }
+
+.btn--sm { padding: var(--space-4) var(--space-12); font-size: var(--font-size-sm); border-radius: var(--radius-sm); }
+
+.btn--lg { padding: var(--space-10) var(--space-20); font-size: var(--font-size-lg); border-radius: var(--radius-md); }
+
+.btn--full-width { width: 100%; }
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.form-control { display: block; width: 100%; padding: var(--space-8) var(--space-12); font-size: var(--font-size-md); line-height: 1.5; color: var(--color-text); background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-base); transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard); }
+
+textarea.form-control { font-family: var(--font-family-base); font-size: var(--font-size-base); }
+
+select.form-control { padding-top: ; padding-bottom: ; padding-left: ; appearance: none; background-image: var(--select-caret-light); background-repeat: no-repeat; background-position: right var(--space-12) center; background-size: 16px; padding-right: var(--space-32); }
+
+@media (prefers-color-scheme: dark) {
+  select.form-control { background-image: var(--select-caret-dark); }
+}
+
+[data-color-scheme="dark"] select.form-control { background-image: var(--select-caret-dark); }
+
+[data-color-scheme="light"] select.form-control { background-image: var(--select-caret-light); }
+
+.form-control:focus { border-color: var(--color-primary); outline: var(--focus-outline); }
+
+.form-label { display: block; margin-bottom: var(--space-8); font-weight: var(--font-weight-medium); font-size: var(--font-size-sm); }
+
+.form-group { margin-bottom: var(--space-16); }
+
+.card { background-color: var(--color-surface); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow var(--duration-normal) var(--ease-standard); }
+
+.card:hover { box-shadow: var(--shadow-md); }
+
+.card__body { padding: var(--space-16); }
+
+.card__header, .card__footer { padding: var(--space-16); border-bottom: 1px solid var(--color-card-border-inner); }
+
+.status { display: inline-flex; align-items: center; padding: var(--space-6) var(--space-12); border-radius: var(--radius-full); font-weight: var(--font-weight-medium); font-size: var(--font-size-sm); }
+
+.status--success { background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  ); color: var(--color-success); border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity)); }
+
+.status--error { background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  ); color: var(--color-error); border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity)); }
+
+.status--warning { background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  ); color: var(--color-warning); border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity)); }
+
+.status--info { background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  ); color: var(--color-info); border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity)); }
+
+.container { width: 100%; margin-right: auto; margin-left: auto; padding-right: var(--space-16); padding-left: var(--space-16); }
+
+@media (min-width: 640px) {
+  .container { max-width: var(--container-sm); }
+}
+
+@media (min-width: 768px) {
+  .container { max-width: var(--container-md); }
+}
+
+@media (min-width: 1024px) {
+  .container { max-width: var(--container-lg); }
+}
+
+@media (min-width: 1280px) {
+  .container { max-width: var(--container-xl); }
+}
+
+.flex { display: flex; }
+
+.flex-col { flex-direction: column; }
+
+.items-center { align-items: center; }
+
+.justify-center { justify-content: center; }
+
+.justify-between { justify-content: space-between; }
+
+.gap-4 { gap: var(--space-4); }
+
+.gap-8 { gap: var(--space-8); }
+
+.gap-16 { gap: var(--space-16); }
+
+.m-0 { margin: 0px; }
+
+.mt-8 { margin-top: var(--space-8); }
+
+.mb-8 { margin-bottom: var(--space-8); }
+
+.mx-8 { margin-left: var(--space-8); margin-right: var(--space-8); }
+
+.my-8 { margin-top: var(--space-8); margin-bottom: var(--space-8); }
+
+.p-0 { padding: 0px; }
+
+.py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+
+.px-8 { padding-left: var(--space-8); padding-right: var(--space-8); }
+
+.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+
+.px-16 { padding-left: var(--space-16); padding-right: var(--space-16); }
+
+.block { display: block; }
+
+.hidden { display: none; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; }
+
+:focus-visible { outline: var(--focus-outline); outline-offset: 2px; }
+
+[data-color-scheme="dark"] .btn--outline { border: 1px solid var(--color-border-secondary); }
+
+@font-face { font-family: FKGroteskNeue; src: url("https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2") format("woff2"); }
+
+.app-container { min-height: 100vh; display: flex; flex-direction: column; }
+
+.header { background: var(--color-surface); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); position: sticky; top: 0px; z-index: 100; }
+
+.header__content { max-width: var(--container-xl); margin: 0px auto; padding: var(--space-16) var(--space-24); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-16); }
+
+.header__title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); color: var(--color-primary); margin: 0px; }
+
+.nav { display: flex; gap: var(--space-8); }
+
+.nav__item { padding: var(--space-8) var(--space-16); border: none; background: transparent; color: var(--color-text-secondary); font-size: var(--font-size-base); font-weight: var(--font-weight-medium); cursor: pointer; border-radius: var(--radius-base); transition: all var(--duration-fast) var(--ease-standard); }
+
+.nav__item:hover { background: var(--color-secondary); color: var(--color-text); }
+
+.nav__item--active { background: var(--color-primary); color: var(--color-btn-primary-text); }
+
+.main { flex: 1 1 0%; max-width: var(--container-xl); margin: 0px auto; padding: var(--space-24); width: 100%; }
+
+.section { display: none; }
+
+.section--active { display: block; }
+
+.section__title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-semibold); color: var(--color-text); margin-bottom: var(--space-24); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-20); margin-bottom: var(--space-32); }
+
+.stat-card { background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-lg); padding: var(--space-20); transition: all var(--duration-normal) var(--ease-standard); }
+
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.stat-card--success { border-left: 4px solid var(--color-success); background: var(--color-bg-3); }
+
+.stat-card--warning { border-left: 4px solid var(--color-warning); background: var(--color-bg-2); }
+
+.stat-card--error { border-left: 4px solid var(--color-error); background: var(--color-bg-4); }
+
+.stat-card__title { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text-secondary); margin-bottom: var(--space-8); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.stat-card__value { font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--color-text); margin-bottom: var(--space-4); }
+
+.stat-card__label { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.quick-actions { margin-bottom: var(--space-32); }
+
+.quick-actions h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-16); color: var(--color-text); }
+
+.quick-actions__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-16); }
+
+.recent-activity h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-16); color: var(--color-text); }
+
+.activity-list { display: flex; flex-direction: column; gap: var(--space-12); }
+
+.activity-item { display: flex; align-items: center; justify-content: space-between; padding: var(--space-12) var(--space-16); background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-base); transition: all var(--duration-fast) var(--ease-standard); }
+
+.activity-item:hover { box-shadow: var(--shadow-sm); }
+
+.activity-item__info { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.activity-item__name { font-weight: var(--font-weight-medium); color: var(--color-text); }
+
+.activity-item__details { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.item-form { background: var(--color-surface); padding: var(--space-24); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border); }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-20); margin-bottom: var(--space-20); }
+
+.form-actions { display: flex; gap: var(--space-12); justify-content: flex-start; }
+
+.inventory-controls { display: flex; gap: var(--space-16); margin-bottom: var(--space-24); align-items: center; flex-wrap: wrap; }
+
+.search-box { flex: 1 1 0%; min-width: 250px; }
+
+.filter-controls { display: flex; gap: var(--space-12); }
+
+.filter-controls .form-control { min-width: 150px; }
+
+.table-container { background: var(--color-surface); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.inventory-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+
+.inventory-table th { background: var(--color-bg-1); padding: var(--space-12) var(--space-16); text-align: left; font-weight: var(--font-weight-semibold); color: var(--color-text); border-bottom: 1px solid var(--color-border); cursor: pointer; user-select: none; position: relative; }
+
+.inventory-table th:hover { background: var(--color-bg-2); }
+
+.inventory-table th::after { content: "↕"; position: absolute; right: var(--space-8); opacity: 0.5; }
+
+.inventory-table td { padding: var(--space-12) var(--space-16); border-bottom: 1px solid var(--color-card-border); vertical-align: middle; }
+
+.inventory-table tbody tr:hover { background: var(--color-bg-1); }
+
+.status-indicator { display: inline-flex; align-items: center; padding: var(--space-4) var(--space-8); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.status-indicator--good { background: rgba(var(--color-success-rgb), var(--status-bg-opacity)); color: var(--color-success); border: 1px solid rgba(var(--color-success-rgb), var(--status-border-opacity)); }
+
+.status-indicator--low { background: rgba(var(--color-warning-rgb), var(--status-bg-opacity)); color: var(--color-warning); border: 1px solid rgba(var(--color-warning-rgb), var(--status-border-opacity)); }
+
+.status-indicator--expired { background: rgba(var(--color-error-rgb), var(--status-bg-opacity)); color: var(--color-error); border: 1px solid rgba(var(--color-error-rgb), var(--status-border-opacity)); }
+
+.status-indicator--expiring { background: rgba(var(--color-warning-rgb), var(--status-bg-opacity)); color: var(--color-warning); border: 1px solid rgba(var(--color-warning-rgb), var(--status-border-opacity)); }
+
+.action-buttons { display: flex; gap: var(--space-8); align-items: center; }
+
+.btn--xs { padding: var(--space-4) var(--space-8); font-size: var(--font-size-xs); border-radius: var(--radius-sm); }
+
+.btn--success { background: var(--color-success); color: var(--color-btn-primary-text); }
+
+.btn--success:hover { background: var(--color-primary-hover); }
+
+.btn--warning { background: var(--color-warning); color: var(--color-btn-primary-text); }
+
+.btn--warning:hover { opacity: 0.9; }
+
+.btn--error { background: var(--color-error); color: var(--color-btn-primary-text); }
+
+.btn--error:hover { opacity: 0.9; }
+
+.reports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-20); margin-bottom: var(--space-32); }
+
+.report-card { background: var(--color-surface); padding: var(--space-24); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border); text-align: center; transition: all var(--duration-normal) var(--ease-standard); }
+
+.report-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.report-card h3 { margin-bottom: var(--space-12); color: var(--color-text); }
+
+.report-card p { color: var(--color-text-secondary); margin-bottom: var(--space-16); }
+
+.report-display { background: var(--color-surface); padding: var(--space-24); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border); min-height: 200px; }
+
+.modal { position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+
+.modal.hidden { display: none; }
+
+.modal__overlay { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); }
+
+.modal__content { position: relative; background: var(--color-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; animation: modalSlideIn var(--duration-normal) var(--ease-standard); }
+
+@keyframes modalSlideIn { 
+  0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0px) scale(1); }
+}
+
+.modal__header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-20) var(--space-24); border-bottom: 1px solid var(--color-card-border); }
+
+.modal__header h3 { margin: 0px; color: var(--color-text); }
+
+.modal__close { background: none; border: none; font-size: var(--font-size-2xl); cursor: pointer; color: var(--color-text-secondary); transition: color var(--duration-fast) var(--ease-standard); padding: var(--space-4); border-radius: var(--radius-sm); }
+
+.modal__close:hover { color: var(--color-text); background: var(--color-secondary); }
+
+.modal__body { padding: var(--space-24); }
+
+.modal__actions { display: flex; gap: var(--space-12); justify-content: flex-end; margin-top: var(--space-20); }
+
+.stock-info { background: var(--color-bg-1); padding: var(--space-16); border-radius: var(--radius-base); margin-bottom: var(--space-20); }
+
+.stock-info h4 { margin: 0 0 var(--space-8) 0; color: var(--color-text); }
+
+.stock-info p { margin: 0px; color: var(--color-text-secondary); }
+
+.stock-actions { display: flex; gap: var(--space-8); margin-bottom: var(--space-16); }
+
+.stock-action { flex: 1 1 0%; transition: all var(--duration-fast) var(--ease-standard); }
+
+.stock-action.active { background: var(--color-primary); color: var(--color-btn-primary-text); border-color: var(--color-primary); }
+
+.toast-container { position: fixed; top: var(--space-20); right: var(--space-20); z-index: 2000; display: flex; flex-direction: column; gap: var(--space-12); }
+
+.toast { background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-base); padding: var(--space-16); box-shadow: var(--shadow-lg); min-width: 300px; display: flex; align-items: center; gap: var(--space-12); animation: toastSlideIn var(--duration-normal) var(--ease-standard); }
+
+.toast--success { border-left: 4px solid var(--color-success); background: rgba(var(--color-success-rgb), 0.05); }
+
+.toast--error { border-left: 4px solid var(--color-error); background: rgba(var(--color-error-rgb), 0.05); }
+
+.toast--warning { border-left: 4px solid var(--color-warning); background: rgba(var(--color-warning-rgb), 0.05); }
+
+.toast--info { border-left: 4px solid var(--color-info); background: rgba(var(--color-info-rgb), 0.05); }
+
+@keyframes toastSlideIn { 
+  0% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 1; transform: translateX(0px); }
+}
+
+.toast__icon { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); }
+
+.toast__content { flex: 1 1 0%; }
+
+.toast__title { font-weight: var(--font-weight-medium); margin-bottom: var(--space-4); color: var(--color-text); }
+
+.toast__message { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0px; }
+
+.toast__close { background: none; border: none; cursor: pointer; color: var(--color-text-secondary); font-size: var(--font-size-lg); padding: var(--space-4); border-radius: var(--radius-sm); transition: all var(--duration-fast) var(--ease-standard); }
+
+.toast__close:hover { background: var(--color-secondary); color: var(--color-text); }
+
+@media (max-width: 768px) {
+  .header__content { flex-direction: column; align-items: stretch; gap: var(--space-12); }
+  .nav { justify-content: center; flex-wrap: wrap; }
+  .main { padding: var(--space-16); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .inventory-controls { flex-direction: column; align-items: stretch; }
+  .search-box { min-width: auto; }
+  .filter-controls { flex-wrap: wrap; }
+  .filter-controls .form-control { flex: 1 1 0%; min-width: 120px; }
+  .table-container { overflow-x: auto; }
+  .inventory-table { min-width: 800px; }
+  .reports-grid { grid-template-columns: 1fr; }
+  .modal__content { width: 95%; margin: var(--space-16); }
+  .toast-container { left: var(--space-16); right: var(--space-16); }
+  .toast { min-width: auto; }
+  .action-buttons { flex-wrap: wrap; }
+  .quick-actions__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .form-actions, .modal__actions { flex-direction: column; }
+  .stock-actions { flex-direction: column; }
+  .nav__item { padding: var(--space-6) var(--space-12); font-size: var(--font-size-sm); }
+}
+
+.loading { display: inline-block; width: 20px; height: 20px; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 50%; border-top-color: var(--color-primary); animation: 1s ease-in-out 0s infinite normal none running spin; }
+
+@keyframes spin { 
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state { text-align: center; padding: var(--space-32); color: var(--color-text-secondary); }
+
+.empty-state__icon { font-size: var(--font-size-4xl); margin-bottom: var(--space-16); opacity: 0.5; }
+
+.empty-state__title { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text); margin-bottom: var(--space-8); }
+
+.empty-state__message { margin-bottom: var(--space-16); }
+
+.text-center { text-align: center; }
+
+.text-right { text-align: right; }
+
+.font-bold { font-weight: var(--font-weight-bold); }
+
+.font-medium { font-weight: var(--font-weight-medium); }
+
+.text-success { color: var(--color-success); }
+
+.text-error { color: var(--color-error); }
+
+.text-warning { color: var(--color-warning); }
+
+.text-info { color: var(--color-info); }
+
+.bg-success { background-color: rgba(var(--color-success-rgb), var(--status-bg-opacity)); }
+
+.bg-error { background-color: rgba(var(--color-error-rgb), var(--status-bg-opacity)); }
+
+.bg-warning { background-color: rgba(var(--color-warning-rgb), var(--status-bg-opacity)); }
+
+.bg-info { background-color: rgba(var(--color-info-rgb), var(--status-bg-opacity)); }
+------MultipartBoundary--GmolPQy1lk6lRGxPi1aDWuKxrhyeRc5Jq3468z0RNo------
