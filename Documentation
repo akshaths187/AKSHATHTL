@@ -1,0 +1,36 @@
+Store Management System
+Project Title: Store Management System
+Prepared By: AKSHATH.S, INBATAMILAN.M,SANJAY.C,SHAHID BASHA.S
+Date: September 2025
+Abstract
+The Store Management System is designed to streamline and automate the daily operations of a store. It manages inventory, sales, billing, and reporting functions efficiently, reducing manual work and improving accuracy.
+Objectives
+• To maintain and update store inventory records.
+• To manage sales and billing operations efficiently.
+• To generate reports for better decision making.
+• To reduce human error and improve productivity.
+System Features / Modules
+1. Inventory Management
+2. Sales and Billing
+3. Customer Management
+4. Supplier Management
+5. Reports and Analytics
+6. User Authentication and Administration
+System Design
+The system follows a modular architecture. The front-end provides an interface for store staff, while the back-end handles database operations. A relational database stores all data securely.
+Database Design
+The database includes tables for Products, Customers, Suppliers, Sales, and Users. Relationships between tables are maintained through primary and foreign keys.
+Technology Used
+Front-end: HTML, CSS, JavaScript
+Back-end: PHP
+Database: MySQL
+Platform: Windows
+Advantages
+• Centralized management of store operations.
+• Improved accuracy of inventory and billing.
+• Quick generation of reports and analytics.
+• Enhanced customer satisfaction.
+Future Scope
+Future enhancements may include integration with mobile apps, barcode scanning, online store capabilities, and advanced analytics dashboards.
+Conclusion
+The Store Management System provides an efficient, user-friendly platform for managing store operations. It reduces manual work, minimizes errors, and helps the management make informed decisions.
